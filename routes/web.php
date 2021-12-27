@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/voting/result', [VotingController::class, 'result']);
 Route::Resource('/voting', VotingController::class);

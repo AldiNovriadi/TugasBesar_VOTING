@@ -3,7 +3,7 @@
 
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
 @section('content')
-    <a class="btn btn-success mt-3" href="/voting/create">Tambah Voting</a>
+    <a class="btn btn-success mt-3" href="/voting/create">Create Voting</a>
     <h1 style="text-align: center;"> Welcome to Voting</h1>
     <!DOCTYPE html>
     <html lang="en">

@@ -36,7 +36,7 @@
                     <a class="nav-item nav-link" href="/voting/create"> Create Voting </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link" href="/voting/result">Result Voting</a>
+                    <a class="nav-item nav-link" href="/voting/result"> Result Voting </a>
                 </li>
             </ul>
         </div>

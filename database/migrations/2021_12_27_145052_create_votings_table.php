@@ -19,13 +19,6 @@ class CreateVotingsTable extends Migration
             $table->integer('optionsid')->unique();
             $table->timestamps();
         });
-
-        // Schema::create('options', function (Blueprint $table) {
-        //     $table->integer('optionsId');
-        //     $table->string('question');
-        //     $table->integer('OptionsId')->unique();
-        //     $table->timestamps();
-        // });
     }
 
     /**

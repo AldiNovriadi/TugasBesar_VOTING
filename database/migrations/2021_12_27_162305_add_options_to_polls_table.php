@@ -14,7 +14,7 @@ class AddOptionsToPollsTable extends Migration
     public function up()
     {
         Schema::table('polls', function (Blueprint $table) {
-            $table->integer('options_id');
+            $table->bigInteger('option_id');
         });
     }
 
@@ -26,7 +26,7 @@ class AddOptionsToPollsTable extends Migration
     public function down()
     {
         Schema::table('polls', function (Blueprint $table) {
-            $table->dropColumn('options_id');
+            $table->dropColumn('option_id');
         });
     }
 }

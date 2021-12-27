@@ -14,11 +14,15 @@ class CreatePollsTable extends Migration
     public function up()
     {
         Schema::create('polls', function (Blueprint $table) {
-            $table->integerIncrements('polls_id');
+            $table->id();
             $table->string('question');
-            $table->integer('options_id');
             $table->timestamps();
         });
+
+        // Schema::table('polls', function (Blueprint $table) {
+        //     $table->foreign('options_id')->references('options_id')->on('options')
+        //         ->onDelete('cascade')->onUpdate('cascade');
+        // });
     }
 
     /**

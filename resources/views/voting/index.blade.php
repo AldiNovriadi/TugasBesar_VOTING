@@ -2,8 +2,9 @@
 @extends('layouts.app')
 
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
+<?php $no = 1; ?>
 @section('content')
-    <a class="btn btn-success mt-3" href="/voting/create">Create Voting</a>
+    <a class="btn btn-primary mt-3" href="/voting/create">Create Voting</a>
     <h1 style="text-align: center;"> Welcome to Voting</h1>
     <!DOCTYPE html>
     <html lang="en">
@@ -23,30 +24,18 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr class="text-center">
-                    <th>No</th>
-                    <th>Name</th>
+                    <th width="50px">No</th>
                     <th>Question</th>
-                    <th> </th>
+
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($voting as $votings)
+                @foreach ($voting as $votings)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $votings->name }}</td>
-                        <td>{{ $votings->question }}</td>
-                        <td>
-                            <a href="/voting/{{ $voting->id }}/edit/" class="btn btn-primary">Edit</a>
-                        </td>
-                        <td>
-                            <form action="/voting/{{ $voting->id }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
-                        </td>
+                        <td><a href="/voting/proces"> {{ $votings->question }} </a></td>
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </body>

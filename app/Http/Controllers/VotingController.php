@@ -3,8 +3,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Voting;
-use App\Models\Votings;
+use App\Models\Pools;
 use Illuminate\Http\Request;
 
 class VotingController extends Controller
@@ -16,7 +15,7 @@ class VotingController extends Controller
 
     public function index1()
     {
-        $voting = Votings::all();
+        $voting = Pools::all();
         return view('voting.index', ['voting' => $voting]);
     }
 

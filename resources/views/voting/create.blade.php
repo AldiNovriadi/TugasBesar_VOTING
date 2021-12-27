@@ -43,10 +43,12 @@
                         <div id="newRow"></div>
                         <button id="addRow" type="button" class="btn btn-info">Add Option</button>
                     </div>
-                </div><br />
-                <button id="addRow" type="button" class="btn btn-primary btn-fluid">Add Question</button>
+                </div> <br />
+                <button id="addRow" type="button" class="btn btn-primary" style="width:100%">Continue </button>
+
             </form>
         </div>
+
 
         <script type="text/javascript">
             // add row

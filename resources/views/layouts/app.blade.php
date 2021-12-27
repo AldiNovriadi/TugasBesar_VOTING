@@ -22,7 +22,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="/barang/">Tugas Besar VOTING</a>
+        <a class="navbar-brand" href="/voting/">Tugas Besar VOTING</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,11 +30,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link" href="/voting/create"> Tambah Voting </a>
+                    <a class="nav-item nav-link" href="/voting"> Home </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link" href="/barang/add">Input Jual</a>
+                    <a class="nav-item nav-link" href="/voting/create"> Create Voting </a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-item nav-link" href="/voting/result">Result Voting</a>
                 </li>
             </ul>
         </div>

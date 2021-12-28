@@ -18,11 +18,6 @@ class CreatePollsTable extends Migration
             $table->string('question');
             $table->timestamps();
         });
-
-        // Schema::table('polls', function (Blueprint $table) {
-        //     $table->foreign('options_id')->references('options_id')->on('options')
-        //         ->onDelete('cascade')->onUpdate('cascade');
-        // });
     }
 
     /**

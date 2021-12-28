@@ -3,6 +3,7 @@
 
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
 @section('content')
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -27,13 +28,22 @@
                     <div class="col-lg-12">
                         <div id="inputFormRow">
                             <span class="text-secondary">Question</span>
-                            <input type="text" name="title[]" class="form-control" value="ss" disabled> <br />
+
+                            <input type="text" name="title[]" class="form-control" value="{{ $choose->question }} "
+                                disabled>
+                            <br />
+
                             <span class="text-secondary">Option</span>
-                            <select class="form-control" name="title[]" class="form-control"> </select>
+                            <select class="form-control" name="title[]" class="form-control">
+                                <option value=""> -- Choose -- </option>
+                                @foreach ($choose->options as $chooses)
+                                    <option value="{{ $chooses->poll_id }}"> {{ $chooses->description }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div> <br />
-                <button id="addRow" type="button" class="btn btn-primary">Save </button>
+                <button id="addRow" type="button" class="btn btn-primary">Vote</button>
             </form>
         </div>
     </body>

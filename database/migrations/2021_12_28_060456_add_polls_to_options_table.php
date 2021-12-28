@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddOptionsToPollsTable extends Migration
+class AddPollsToOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddOptionsToPollsTable extends Migration
      */
     public function up()
     {
-        Schema::table('polls', function (Blueprint $table) {
-            $table->bigInteger('option_id');
+        Schema::table('options', function (Blueprint $table) {
+            $table->bigInteger('poll_id')->unsigned();
         });
     }
 
@@ -25,8 +25,8 @@ class AddOptionsToPollsTable extends Migration
      */
     public function down()
     {
-        Schema::table('polls', function (Blueprint $table) {
-            $table->dropColumn('option_id');
+        Schema::table('options', function (Blueprint $table) {
+            $table->dropColumn('poll_id');
         });
     }
 }

@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Options;
 use App\Models\Polls;
 use Illuminate\Http\Request;
 
@@ -52,8 +53,9 @@ class VotingController extends Controller
         return view('voting.result');
     }
 
-    public function proces()
+    public function proces(Polls $id)
     {
-        return view('voting.proces');
+        $choose = $id->load('options');
+        return view('voting.proces', ['choose' => $choose]);
     }
 }

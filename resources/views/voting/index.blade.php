@@ -32,8 +32,8 @@
             <tbody>
                 @foreach ($voting as $votings)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td><a href="/voting/proces"> {{ $votings->question }} </a></td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td><a href="/voting/proces/{{ $votings->id }}"> {{ $votings->question }} </a></td>
                     </tr>
                 @endforeach
             </tbody>

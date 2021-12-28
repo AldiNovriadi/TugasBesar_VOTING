@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Options extends Model
 {
-    protected $fillable = ['description', 'voters'];
+    protected $fillable = ['description', 'voters', 'poll_id'];
 
     public function poll()
     {
-        return $this->belongsTo('App/Polls');
+        return $this->belongsTo(Polls::class);
     }
     use HasFactory;
 }

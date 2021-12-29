@@ -29,7 +29,7 @@
                         <div id="inputFormRow">
                             <span class="text-secondary">Question</span>
 
-                            <input type="text" name="title[]" class="form-control" value="{{ $choose->question }} "
+                            <input type="text" name="question" class="form-control" value="{{ $choose->question }} "
                                 disabled>
                             <br />
 

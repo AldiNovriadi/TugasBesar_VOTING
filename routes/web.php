@@ -20,6 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/voting/proces/{id}', [VotingController::class, 'proces']);
-Route::get('/voting/result', [VotingController::class, 'result']);
+Route::get('/voting/result/{id}', [VotingController::class, 'result']);
 Route::Resource('/voting', VotingController::class);
 Route::Resource('/options', OptionController::class);

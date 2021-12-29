@@ -25,15 +25,17 @@
             <thead>
                 <tr class="text-center">
                     <th width="50px">No</th>
-                    <th>Question</th>
-
+                    <th width="700px">Question</th>
+                    <th> Result Voting</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($voting as $votings)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td><a href="/voting/proces/{{ $votings->id }}"> {{ $votings->question }} </a></td>
+                        <td> <a href="/voting/proces/{{ $votings->id }}"> {{ $votings->question }} </a></td>
+                        <td class="text-center"> <a class="btn btn-primary" href="/voting/result/{{ $votings->id }}">View
+                                Result</a> </td>
                     </tr>
                 @endforeach
             </tbody>

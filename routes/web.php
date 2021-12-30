@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\VotingController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/voting/login', [LoginController::class, 'index']);
+Route::get('/voting/google', [LoginController::class, 'google']);
 Route::get('/voting/proces/{id}', [VotingController::class, 'proces']);
 Route::get('/voting/result/{id}', [VotingController::class, 'result']);
 Route::Resource('/voting', VotingController::class);

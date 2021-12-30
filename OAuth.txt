@@ -1,0 +1,4 @@
+Client ID
+1008844533839-p7taa03fq1u53kh7hog2h2qrrn4tgh8o.apps.googleusercontent.com
+Client Secret
+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

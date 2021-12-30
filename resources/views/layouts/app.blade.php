@@ -30,10 +30,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link" href="/voting"> Home </a>
+                    <a class="nav-item nav-link text-light"> | </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link" href="/voting/create"> Create Voting </a>
+                    <a class="nav-item nav-link text-light" href="/voting"> Home </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-item nav-link text-light" href="/voting/create"> Create Voting </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-item nav-link text-light"> | </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-item nav-link text-light" href="/voting/login"> Login Akun </a>
                 </li>
             </ul>
         </div>

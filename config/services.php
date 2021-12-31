@@ -14,6 +14,7 @@ return [
     |
     */
 
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
@@ -30,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => '1008844533839-p7taa03fq1u53kh7hog2h2qrrn4tgh8o.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://localhost:8000/auth/google/callback',
+    ],
 ];

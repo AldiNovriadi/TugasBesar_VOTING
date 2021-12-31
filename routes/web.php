@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\VotingController;
@@ -20,13 +21,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/voting/login', [LoginController::class, 'index']);
-Route::get('/voting/google', [LoginController::class, 'google']);
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('/voting/proces/{id}', [VotingController::class, 'proces']);
 Route::get('/voting/result/{id}', [VotingController::class, 'result']);
 Route::Resource('/voting', VotingController::class);
 Route::Resource('/options', OptionController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');

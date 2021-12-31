@@ -26,3 +26,7 @@ Route::get('/voting/proces/{id}', [VotingController::class, 'proces']);
 Route::get('/voting/result/{id}', [VotingController::class, 'result']);
 Route::Resource('/voting', VotingController::class);
 Route::Resource('/options', OptionController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Polls;
+use App\Models\Options;
+use App\Models\Voters;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
@@ -13,8 +16,8 @@ class OptionController extends Controller
      */
     public function index()
     {
-        //
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +26,7 @@ class OptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('option.create');
     }
 
     /**
@@ -34,7 +37,13 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'question' => 'required',
+            'option' => 'required'
+        ]);
+
+        Voters::create($request->all());
+        return redirect('/options')->with('success', 'Savedd');
     }
 
     /**

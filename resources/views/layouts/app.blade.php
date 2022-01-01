@@ -41,19 +41,19 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link text-light"> | </a>
+                    <a class="nav-item nav-link text-light"> {{ Auth::user()->name }}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-item nav-link text-light"> {{ Auth::user()->name }}</a>
+                    <a class="nav-item nav-link text-light"> | </a>
                 </li>
                 <li class="nav-item dropdown">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        {{-- <dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                        <dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                        </dropdown-link> --}}
+                        </dropdown-link>
 
-                        <a class="nav-item nav-link text-light"> Logout </a>
+                        <button type="submit"> Logout </button>
                     </form>
                 </li>
                 <li class="nav-item dropdown">

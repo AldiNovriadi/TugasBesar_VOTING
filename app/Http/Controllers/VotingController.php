@@ -3,8 +3,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Options;
 use App\Models\Polls;
+use App\Models\Voters;
+use App\Models\Options;
 use Illuminate\Http\Request;
 
 class VotingController extends Controller
@@ -20,6 +21,18 @@ class VotingController extends Controller
     public function create()
     {
         return view('voting.create');
+    }
+
+    public function store(Request $request)
+    {
+        // $request->validate([
+        //     'pollv_id' => 'required',
+        //     'optionv_id' => 'required',
+        //     'user_id' => 'required'
+        // ]);
+
+        // Voters::create($request->all());
+        // return redirect('/voting')->with('success', 'Savedd');
     }
 
     public function edit($id)
@@ -56,6 +69,18 @@ class VotingController extends Controller
     public function proces(Polls $id)
     {
         $choose = $id->load('options');
-        return view('voting.proces', ['choose' => $choose]);
+        return view('option.create', ['choose' => $choose]);
+    }
+
+    public function vote(Request $request)
+    {
+        $request->validate([
+            'pollv_id' => 'required',
+            'optionv_id' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        Voters::create($request->all());
+        return redirect('/voting')->with('success', 'Savedd');
     }
 }

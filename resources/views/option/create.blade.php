@@ -23,27 +23,38 @@
                 <h1> Proces Voting</h1>
             </div>
 
-            <form method="post" action="">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li> {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div> <br />
+            @endif
+
+            <form method="post" action="/voting/vote">
+                @csrf
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="inputFormRow">
                             <span class="text-secondary">Question</span>
-
-                            <input type="text" name="question" class="form-control" value="{{ $choose->question }} "
-                                disabled>
+                            <input type="hidden" value="{{ Auth::User()->id }}" name="user_id">
+                            <input type="text" class="form-control" value="{{ $choose->question }} " disabled>
+                            <input type="hidden" name="pollv_id" value="{{ $choose->id }}">
                             <br />
 
                             <span class="text-secondary">Option</span>
-                            <select class="form-control" name="title[]" class="form-control">
+                            <select class="form-control" name="optionv_id" class="form-control">
                                 <option value=""> -- Choose -- </option>
                                 @foreach ($choose->options as $chooses)
-                                    <option value="{{ $chooses->poll_id }}"> {{ $chooses->description }}</option>
+                                    <option value="{{ $chooses->id }}"> {{ $chooses->description }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                 </div> <br />
-                <button id="addRow" type="button" class="btn btn-primary">Vote</button>
+                <button type="submit" class="btn btn-primary">Vote</button>
             </form>
         </div>
     </body>

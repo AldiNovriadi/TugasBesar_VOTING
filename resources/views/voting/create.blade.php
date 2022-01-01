@@ -29,11 +29,11 @@
                     <div class="col-lg-12">
                         <div id="inputFormRow">
                             <span class="text-secondary">Question</span>
-                            <input type="text" name="title[]" class="form-control m-input" placeholder="Enter title"
+                            <input type="text" name="question" class="form-control m-input" placeholder="Enter Question"
                                 autocomplete="off"> <br />
                             <span class="text-secondary">Option</span>
                             <div class="input-group mb-3">
-                                <input type="text" name="title[]" class="form-control m-input" placeholder="Enter title"
+                                <input type="text" name="description" class="form-control m-input" placeholder="Enter Option"
                                     autocomplete="off">
                                 <div class="input-group-append">
                                     <button id="removeRow" type="button" class="btn btn-danger">Remove</button>

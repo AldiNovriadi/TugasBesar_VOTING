@@ -25,14 +25,14 @@ class VotingController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'pollv_id' => 'required',
-        //     'optionv_id' => 'required',
-        //     'user_id' => 'required'
-        // ]);
+        $request->validate([
+            'question' => 'required',
+            'description' => 'required'
+        ]);
 
-        // Voters::create($request->all());
-        // return redirect('/voting')->with('success', 'Savedd');
+        Polls::create($request->question());
+        Options::create($request->description());
+        return redirect('/voting')->with('success', 'Savedd');
     }
 
     public function edit($id)

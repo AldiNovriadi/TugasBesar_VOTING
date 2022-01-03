@@ -7,6 +7,7 @@ use App\Models\Polls;
 use App\Models\Voters;
 use App\Models\Options;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VotingController extends Controller
 {
@@ -63,7 +64,13 @@ class VotingController extends Controller
 
     public function result()
     {
-        return view('voting.result');
+        $result = DB::select(DB::raw("SELECT COUNT(*) as total_voters, optionv_id from voters WHERE pollv_id group BY optionv_id"));
+        $chartData = "";
+        foreach ($result as $list) {
+            $chartData .= "['" . $list->optionv_id . "', " . $list->total_voters . "],";
+        }
+        $arr['chartData'] = rtrim($chartData, ",");
+        return view('voting.result', $arr);
     }
 
     public function proces(Polls $id)

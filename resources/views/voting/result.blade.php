@@ -1,5 +1,5 @@
 {{-- MENAMPILKAN TAMPILAN YANG ADA DI FOLDER LAYOUTS --}}
-@extends('layouts.navbar.app')
+@extends('layouts.navbar.app1')
 
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
 @section('content')

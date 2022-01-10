@@ -1,4 +1,4 @@
-@extends('layouts.navbar.app')
+@extends('layouts.navbar.app1')
 
 @section('content')
     <!DOCTYPE html>

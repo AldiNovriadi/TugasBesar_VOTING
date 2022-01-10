@@ -1,5 +1,5 @@
 {{-- MENAMPILKAN TAMPILAN YANG ADA DI FOLDER LAYOUTS --}}
-@extends('layouts.app')
+@extends('layouts.navbar.app')
 
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
 <?php $no = 1; ?>
@@ -51,5 +51,5 @@
     </script>
 
     </html>
-
 @endsection
+{{-- @include('layouts.footer') --}}

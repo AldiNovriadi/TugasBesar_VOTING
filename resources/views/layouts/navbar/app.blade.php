@@ -40,9 +40,9 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-item nav-link text-light"> {{ Auth::user()->name }}</a>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link text-light"> | </a>
                 </li>

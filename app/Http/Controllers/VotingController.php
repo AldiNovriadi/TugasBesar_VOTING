@@ -30,9 +30,15 @@ class VotingController extends Controller
             'question' => 'required',
             'description' => 'required'
         ]);
+        // dd($request);
+        $question['question'] = $request->question;
+        $option = $request->description;
 
-        Polls::create($request->question());
-        Options::create($request->description());
+        $create_poll =   Polls::create($question);
+        foreach ($option as $options) {
+            Options::create(['description' => $options, 'poll_id' => $create_poll->id]);
+        }
+
         return redirect('/voting')->with('success', 'Savedd');
     }
 

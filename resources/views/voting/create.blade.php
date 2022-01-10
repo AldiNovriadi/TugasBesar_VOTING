@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navbar.app')
 
 @section('content')
     <!DOCTYPE html>
@@ -24,7 +24,8 @@
                 <h1> Create Voting</h1>
             </div>
 
-            <form method="post" action="">
+            <form method="post" action="/voting">
+                @csrf
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="inputFormRow">
@@ -33,8 +34,8 @@
                                 autocomplete="off"> <br />
                             <span class="text-secondary">Option</span>
                             <div class="input-group mb-3">
-                                <input type="text" name="description" class="form-control m-input" placeholder="Enter Option"
-                                    autocomplete="off">
+                                <input type="text" name="description[]" class="form-control m-input"
+                                    placeholder="Enter Option" autocomplete="off">
                                 <div class="input-group-append">
                                     <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
                                 </div>
@@ -44,7 +45,7 @@
                         <button id="addRow" type="button" class="btn btn-info">Add Option</button>
                     </div>
                 </div> <br />
-                <button id="addRow" type="button" class="btn btn-primary" style="width:100%">Continue </button>
+                <button id="addRow" type="submit" class="btn btn-primary" style="width:100%">Continue </button>
 
             </form>
         </div>
@@ -57,7 +58,7 @@
                 html += '<div id="inputFormRow">';
                 html += '<div class="input-group mb-3">';
                 html +=
-                    '<input type="text" name="title[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
+                    '<input type="text" name="description[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
                 html += '<div class="input-group-append">';
                 html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
                 html += '</div>';

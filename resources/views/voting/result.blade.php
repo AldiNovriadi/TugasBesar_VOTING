@@ -33,7 +33,11 @@
     </head>
 
     <body>
-        <div id="piechart" style="width: 900px; height: 500px;"></div>
+        <main id="main" class="main mt-1">
+            <div class="pagetitle">
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
+            </div>
+        </main>
     </body>
 
     </html>

@@ -42,20 +42,18 @@ class VotingController extends Controller
         return redirect('/voting')->with('success', 'Savedd');
     }
 
-    public function edit($id)
+    public function edit(Polls $voting)
     {
-        $voting = Polls::find($id);
-        return view('voting.edit', compact('voting'));
+        $choose = $voting->load('options');
+        $voting = ($voting);
+        return view('voting.edit', compact('voting', 'choose'));
     }
 
     public function update(Request $request, Polls $voting)
     {
         $request->validate([
-            'code' => 'required',
-            'name' => 'required',
-            'gender' => 'required',
-            'birth_place' => 'required',
-            'birth_date' => 'required',
+            'question' => 'required',
+            'description' => 'required'
         ]);
 
         $voting->update($request->all());
@@ -68,7 +66,7 @@ class VotingController extends Controller
         return redirect('/voting')->with('success', 'voting deleted');
     }
 
-    public function result()
+    public function result($id)
     {
         $result = DB::select(DB::raw("SELECT COUNT(*) as total_voters, optionv_id from voters WHERE pollv_id group BY optionv_id"));
         $chartData = "";

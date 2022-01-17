@@ -27,7 +27,7 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 Route::get('/voting/proces/{id}', [VotingController::class, 'proces']);
 Route::post('/voting/vote', [VotingController::class, 'vote']);
 Route::get('/voting/result/{id}', [VotingController::class, 'result']);
-Route::Resource('/voting', VotingController::class);
+Route::Resource('/voting', VotingController::class)->middleware("auth");
 Route::Resource('/options', OptionController::class);
 
 

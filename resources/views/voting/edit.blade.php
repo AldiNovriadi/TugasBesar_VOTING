@@ -35,7 +35,7 @@
                     <div class="text-center" style="margin: 20px 0px 20px 0px;">
                         {{-- <a href="https://shouts.dev/" target="_blank"><img src="https://i.imgur.com/hHZjfUq.png"></a><br> --}}
                         {{-- <span class="text-secondary">Tambah Voting</span> --}}
-                        <h1> Create Voting</h1>
+                        <h1> Kelola Voting</h1>
                     </div>
 
                     <form method="post" action="/voting">
@@ -43,17 +43,20 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div id="inputFormRow">
+
                                     <span class="text-secondary">Question</span>
                                     <input type="text" name="question" class="form-control m-input"
-                                        placeholder="Enter Question" autocomplete="off"> <br />
+                                        value="{{ $choose->question }}" autocomplete="off"> <br />
                                     <span class="text-secondary">Option</span>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="description[]" class="form-control m-input"
-                                            placeholder="Enter Option" autocomplete="off">
-                                        <div class="input-group-append">
-                                            <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                                    @foreach ($choose->options as $chooses)
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="description[]" class="form-control m-input"
+                                                value=" {{ $chooses->description }}" autocomplete="off">
+                                            <div class="input-group-append">
+                                                <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div id="newRow"></div>
                                 <button id="addRow" type="button" class="btn btn-info">Add Option</button>

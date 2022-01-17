@@ -15,6 +15,18 @@
     </head>
 
     <body>
+        <main id="main" class="main">
+            <div class="pagetitle">
+                <h1>Dashboard</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/voting">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </nav>
+            </div>
+        </main>
+
         <main id="main" class="main mt-1">
             <div class="pagetitle">
                 <div class="container" style="max-width: 700px;">

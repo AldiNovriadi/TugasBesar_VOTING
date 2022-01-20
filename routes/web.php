@@ -24,10 +24,14 @@ Route::get('/', function () {
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+// Route::post('/logout', [GoogleController::class, 'logout'])
+//     ->middleware('auth')
+//     ->name('logout');
+
 Route::get('/voting/proces/{id}', [VotingController::class, 'proces']);
 Route::post('/voting/vote', [VotingController::class, 'vote']);
 Route::get('/voting/result/{id}', [VotingController::class, 'result']);
-Route::Resource('/voting', VotingController::class)->middleware("auth");
+Route::Resource('/voting', VotingController::class)->middleware('auth');
 Route::Resource('/options', OptionController::class);
 
 

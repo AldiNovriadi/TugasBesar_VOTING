@@ -3,77 +3,59 @@
 
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
 @section('content')
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/voting">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Proses Voting</h5>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li> {{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div> <br />
+                        @endif
 
-    <!DOCTYPE html>
-    <html lang="en">
+                        <form method="post" action="/voting/vote">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="inputFormRow">
+                                        <span class="text-secondary">Question</span>
+                                        <input type="hidden" value="{{ Auth::User()->id }}" name="user_id">
+                                        <input type="text" class="form-control" value="{{ $choose->question }} "
+                                            disabled>
+                                        <input type="hidden" name="pollv_id" value="{{ $choose->id }}">
+                                        <br />
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-
-    <body>
-        <main id="main" class="main">
-            <div class="pagetitle">
-                <h1>Dashboard</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/voting">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </nav>
-            </div>
-        </main>
-
-        <main id="main" class="main mt-1">
-            <div class="pagetitle">
-                <div class="container" style="max-width: 700px;">
-
-                    <div class="text-center" style="margin: 20px 0px 20px 0px;">
-                        {{-- <a href="https://shouts.dev/" target="_blank"><img src="https://i.imgur.com/hHZjfUq.png"></a><br> --}}
-                        {{-- <span class="text-secondary">Tambah Voting</span> --}}
-                        <h1> Proces Voting</h1>
-                    </div>
-
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li> {{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div> <br />
-                    @endif
-
-                    <form method="post" action="/voting/vote">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div id="inputFormRow">
-                                    <span class="text-secondary">Question</span>
-                                    <input type="hidden" value="{{ Auth::User()->id }}" name="user_id">
-                                    <input type="text" class="form-control" value="{{ $choose->question }} " disabled>
-                                    <input type="hidden" name="pollv_id" value="{{ $choose->id }}">
-                                    <br />
-
-                                    <span class="text-secondary">Option</span>
-                                    <select class="form-control" name="optionv_id" class="form-control">
-                                        <option value=""> -- Choose -- </option>
-                                        @foreach ($choose->options as $chooses)
-                                            <option value="{{ $chooses->id }}"> {{ $chooses->description }}</option>
-                                        @endforeach
-                                    </select>
+                                        <span class="text-secondary">Option</span>
+                                        <select class="form-control" name="optionv_id" class="form-control">
+                                            <option value=""> -- Choose -- </option>
+                                            @foreach ($choose->options as $chooses)
+                                                <option value="{{ $chooses->id }}"> {{ $chooses->description }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                        </div> <br />
-                        <button type="submit" class="btn btn-primary">Vote</button>
-                    </form>
+                            </div> <br />
+                            <button type="submit" class="btn btn-primary">Vote</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </main>
-    </body>
+        </div>
+    </section>
 
-    </html>
 @endsection

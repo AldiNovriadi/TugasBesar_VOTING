@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard</title>
+    <title>@yield('title')</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -30,6 +30,8 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
 
     <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.0
@@ -166,12 +168,14 @@
         </ul>
     </aside><!-- End Sidebar-->
 
-
+    <main id="main" class="main">
+        @yield("content")
+    </main>
 
     <!-- ======= Footer ======= -->
-    {{-- <footer id="footer" class="footer">
+    <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Aldi Novriadi</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
@@ -180,7 +184,7 @@
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
-    </footer><!-- End Footer --> --}}
+    </footer><!-- End Footer -->
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
@@ -195,12 +199,15 @@
     <script src="{{ asset('assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <div class="container">
-        @yield("content")
-    </div>
+
+    @yield('script')
 </body>
+
 
 </html>

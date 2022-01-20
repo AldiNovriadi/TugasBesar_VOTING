@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Polls;
-use App\Models\Options;
 use App\Models\Voters;
+use App\Models\Options;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OptionController extends Controller
 {

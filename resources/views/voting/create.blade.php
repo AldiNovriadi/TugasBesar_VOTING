@@ -1,12 +1,16 @@
 @extends('layouts.navbar.app1')
-z
+
+@section('title')
+    Create Voting
+@endsection
+
 @section('content')
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>Create Voting</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/voting">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">Create Voting</li>
             </ol>
         </nav>
     </div>
@@ -16,24 +20,31 @@ z
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Create Voting</h5>
-                        <form method="post" action="/voting">
+                        <form class="row g-3" method="post" action="/voting">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div id="inputFormRow">
-                                        <span class="text-secondary">Question</span>
-                                        <input type="text" name="question" class="form-control m-input"
-                                            placeholder="Enter Question" autocomplete="off"> <br />
-                                        <span class="text-secondary">Option</span>
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="description[]" class="form-control m-input"
-                                                placeholder="Enter Option" autocomplete="off">
-
-                                        </div>
-                                    </div>
-                                    <div id="newRow"></div>
-                                    <button id="addRow" type="button" class="btn btn-outline-primary">Add Option</button>
+                                <div class="col-md-6">
+                                    <span class="text-secondary">Time</span>
+                                    <input type="time" name="time" class="form-control" placeholder="Enter Time">
                                 </div>
+                                <div class="col-md-6">
+                                    <span class="text-secondary">Date</span>
+                                    <input type="date" name="date" class="form-control" placeholder="Enter Date">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="inputFormRow">
+                                    <span class="text-secondary">Question</span>
+                                    <input type="text" name="question" class="form-control m-input"
+                                        placeholder="Enter Question" autocomplete="off">
+                                    <span class="text-secondary">Option</span>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="description[]" class="form-control m-input"
+                                            placeholder="Enter Option" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div id="newRow"></div>
+                                <button id="addRow" type="button" class="btn btn-outline-primary">Add Option</button>
                             </div>
                             <p align="right">
                                 <button id="addRow" type="submit" class="btn btn-primary" style="width:15%">Continue

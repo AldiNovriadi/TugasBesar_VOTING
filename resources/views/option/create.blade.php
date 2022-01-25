@@ -1,14 +1,18 @@
 {{-- MENAMPILKAN TAMPILAN YANG ADA DI FOLDER LAYOUTS --}}
 @extends('layouts.navbar.app1')
 
+@section('title')
+    Proses Voting
+@endsection
+
 {{-- UNTUK MENAMPILKAN DATA SETELAH TAMPILAN HEADING --}}
 @section('content')
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>Proses Voting</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/voting">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">Proses Voting</li>
             </ol>
         </nav>
     </div>
@@ -39,7 +43,6 @@
                                             disabled>
                                         <input type="hidden" name="pollv_id" value="{{ $choose->id }}">
                                         <br />
-
                                         <span class="text-secondary">Option</span>
                                         <select class="form-control" name="optionv_id" class="form-control">
                                             <option value=""> -- Choose -- </option>
@@ -50,7 +53,7 @@
                                     </div>
                                 </div>
                             </div> <br />
-                            <button type="submit" class="btn btn-primary">Vote</button>
+                            <button type="submit" class="btn btn-primary" style="width:10%">Vote</button>
                         </form>
                     </div>
                 </div>

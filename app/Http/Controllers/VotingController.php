@@ -8,11 +8,10 @@ use App\Models\Voters;
 use App\Models\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class VotingController extends Controller
 {
-
-
     public function index()
     {
         $voting = Polls::all();
@@ -27,10 +26,13 @@ class VotingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'time' => 'required',
+            'date' => 'required',
             'question' => 'required',
-            'description' => 'required'
+            'description' => 'required',
         ]);
-        // dd($request);
+        $question['user_id'] = Auth::User()->id;
+        $question['overdue'] = date('Y-m-d H:i:s', strtotime("$request->date $request->time"));
         $question['question'] = $request->question;
         $option = $request->description;
 
@@ -46,17 +48,34 @@ class VotingController extends Controller
     {
         $choose = $voting->load('options');
         $voting = ($voting);
-        return view('voting.edit', compact('voting', 'choose'));
+        $time = date('H:i:s', strtotime($voting->overdue));
+        $date = date('Y-m-d', strtotime($voting->overdue));
+        return view('voting.edit', compact('voting', 'choose', 'time', 'date'));
     }
 
     public function update(Request $request, Polls $voting)
     {
+        $choose = $voting->load('options');
         $request->validate([
+            'time' => 'required',
+            'date' => 'required',
             'question' => 'required',
             'description' => 'required'
         ]);
 
-        $voting->update($request->all());
+        $overdue = date('Y-m-d H:i:s', strtotime("$request->date $request->time"));
+        $voting->update([
+            'question' => $request->question,
+            'overdue' => $overdue
+
+        ]);
+        $choose->options->each->delete();
+        foreach ($request->description as $desc) {
+            Options::create([
+                'description' => $desc,
+                'poll_id' => $voting->id
+            ]);
+        }
         return redirect('/voting')->with('success', 'voting Updated!');
     }
 
@@ -68,13 +87,23 @@ class VotingController extends Controller
 
     public function result($id)
     {
-        $result = DB::select(DB::raw("SELECT COUNT(*) as total_voters, optionv_id from voters WHERE pollv_id group BY optionv_id"));
-        $chartData = "";
-        foreach ($result as $list) {
-            $chartData .= "['" . $list->optionv_id . "', " . $list->total_voters . "],";
+        // $result = DB::select(DB::raw("SELErCT COUNT(*) as total_voters, optionv_id from voters WHERE pollv_id group BY optionv_id"));
+        // $chartData = "";
+        // foreach ($result as $list) {
+        //     $chartData .= "['" . $list->optionv_id . "', " . $list->total_voters . "],";
+        // }
+        // $arr['chartData'] = rtrim($chartData, ",");
+
+        $result = \App\Models\Options::where('poll_id', $id)->get();
+
+        $categories = [];
+
+        foreach ($result as $votings) {
+            $categories[] = $votings->description;
+            $jumlah[] = $votings->voters->count();
+            // dd(json_encode($categories));    
         }
-        $arr['chartData'] = rtrim($chartData, ",");
-        return view('voting.result', $arr);
+        return view('voting.result', ['categories' => $categories, 'jumlah' => $jumlah]);
     }
 
     public function proces(Polls $id)

@@ -137,7 +137,7 @@
                     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
                             @php
-                                $voting = \App\Models\Polls::all();
+                                $voting = \App\Models\Polls::where('user_id', Auth::User()->id)->get();
                             @endphp
                             @foreach ($voting as $votings)
                                 <a href="/voting/{{ $votings->id }}/edit">

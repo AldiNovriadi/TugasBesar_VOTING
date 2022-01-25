@@ -49,7 +49,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link text-light"> | </a>
                 </li>
-                {{-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <dropdown-link :href="route('logout')" onclick="event.preventDefault();
@@ -57,7 +57,7 @@
                         </dropdown-link>
 
                         <button type="submit"> Logout </button>
-                    </form> --}}
+                    </form>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link text-light" href="/login"> Login Akun </a>
